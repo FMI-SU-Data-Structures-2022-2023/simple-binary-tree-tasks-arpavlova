@@ -83,6 +83,8 @@ bool areSubtreesBST(Node* root)
         }
         return false;
     }
+    
+    return true;
 }
 
 bool isBST(Node* tree)
