@@ -38,7 +38,7 @@ bool isSubtreeSymmetric(Node* root)
 {
     if (!root->left && !root->right) { return true; }
 
-    if (!root->left || !root->right) { return false; }
+    if ((!root->left && root->right) || (root->left && !root->right)) { return false; }
 
     if (root->left->key == root->right->key)
     {
