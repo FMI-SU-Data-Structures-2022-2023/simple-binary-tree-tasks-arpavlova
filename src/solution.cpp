@@ -52,6 +52,7 @@ bool isSubtreeSymmetric(Node* root)
 bool isSymmetric(Node* tree) 
 {
     if (!tree) { return true; }
+    if (!tree->left && !tree->right) return true;
     return isSubtreeSymmetric(tree->left) && isSubtreeSymmetric(tree->right);
 }
 
