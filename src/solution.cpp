@@ -34,16 +34,15 @@ int sumElementsAtLevel(Node* tree, unsigned level)
     return sumElementsAtLevel(tree->left, level-1) + sumElementsAtLevel(tree->right, level-1);
 
 }
-
-bool areSubtreesSymmetric(Node* left, Node* right)
+bool isSubtreeSymmetric(Node* root)
 {
-    if (!left && !right) { return true; }
+    if (!root->left && !root->right) { return true; }
 
-    if (!left || !right) { return false; }
+    if (!root->left || !root->right) { return false; }
 
-    if (left->key == right->key)
+    if (root->left->key == root->right->key)
     {
-        return areSubtreesSymmetric(left->left, left->right) && areSubtreesSymmetric(left->right, left->left);
+        return isSubtreeSymmetric(root->left) && isSubtreeSymmetric(root->right);
     }
 
 
@@ -53,7 +52,7 @@ bool areSubtreesSymmetric(Node* left, Node* right)
 bool isSymmetric(Node* tree) 
 {
     if (!tree) { return true; }
-    return areSubtreesSymmetric(tree->left, tree->right);
+    return isSubtreeSymmetric(tree->left) && isSubtreeSymmetric(tree->right);
 }
 
 bool areSubtreesBST(Node* root)
